@@ -1,9 +1,10 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation} from "@apollo/client";
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../../components/product-card/product-card.component";
 import Spinner from "../../components/spinner/spinner.component";
 import { CategoryContainer, Title } from "./category.styles";
+
 
 const GET_COLLECTION_BY_TITLE = gql`
   query ($title: String!) {
@@ -20,11 +21,33 @@ const GET_COLLECTION_BY_TITLE = gql`
   }
 `;
 
+const SET_CATEGORY = gql`
+  mutation ($category: Category!) {
+    setNewCategory(category: $category) {
+      id
+      title
+      items {
+        id
+        name
+        price
+        imageUrl
+      }
+    }
+  }
+`;
+
 const Category = () => {
   const { category } = useParams();
-  const { loading, error, data } = useQuery(GET_COLLECTION_BY_TITLE, {
+  // const { loading, error, data } = useQuery(GET_COLLECTION_BY_TITLE, {
+  //   variables: {
+  //     title: category,
+  //   },
+  // });
+
+  const [setNewCategory, { loading, error, data }] = useMutation(SET_CATEGORY);
+  setNewCategory({
     variables: {
-      title: category,
+      category: categoryObject,
     },
   });
 
