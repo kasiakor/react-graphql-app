@@ -37,8 +37,9 @@ const Category = () => {
       const {
         getCollectionsByTitle: { items },
       } = data;
+
+      setProducts(items);
     }
-    setProducts(data);
   }, [data]);
 
   return (
