@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const BackgroundImage = styled.div`
   width: 100%;
@@ -64,5 +64,8 @@ export const DirectoryItemContainer = styled.div`
     ${Body} {
       opacity: 0.9;
     }
+  }
+  @media screen and (max-width: 800px) {
+    height: 200px;
   }
 `;
