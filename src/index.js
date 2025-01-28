@@ -8,8 +8,6 @@ import { CartProvider } from "./contexts/cart.context";
 import { CategoriesProvider } from "./contexts/categories.context";
 import { UserProvider } from "./contexts/user.context";
 
-import "./index.scss";
-
 const client = new ApolloClient({
   uri: "https://crwn-clothing.com/",
   cache: new InMemoryCache(),
